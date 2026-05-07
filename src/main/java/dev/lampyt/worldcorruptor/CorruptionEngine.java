@@ -35,7 +35,7 @@ final class CorruptionEngine {
     }
 
     int tick(List<? extends Player> onlinePlayers) {
-        List<Player> eligiblePlayers = onlinePlayers.stream()
+        List<? extends Player> eligiblePlayers = onlinePlayers.stream()
                 .filter(player -> settings.allowsWorld(player.getWorld().getName()))
                 .toList();
         if (eligiblePlayers.isEmpty()) {
@@ -123,7 +123,7 @@ final class CorruptionEngine {
         return true;
     }
 
-    private void maybeSpawnEntity(List<Player> eligiblePlayers) {
+    private void maybeSpawnEntity(List<? extends Player> eligiblePlayers) {
         if (!settings.entitySpawningEnabled() || random.nextDouble() > settings.entitySpawnChance()) {
             return;
         }

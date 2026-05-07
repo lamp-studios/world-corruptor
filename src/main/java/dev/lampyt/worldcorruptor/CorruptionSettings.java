@@ -67,7 +67,7 @@ final class CorruptionSettings {
                 Math.max(1, config.getInt("corruption.radius", 18)),
                 Math.max(1, config.getInt("corruption.blocks-per-cycle", 18)),
                 materials(config.getStringList("corruption.protected-materials"), defaultProtectedMaterials()),
-                materials(config.getStringList("corruption.palette"), defaultPalette()),
+                palette(config.getStringList("corruption.palette"), defaultPalette()),
                 Math.max(0, config.getInt("corruption.operations.replace-weight", 55)),
                 Math.max(0, config.getInt("corruption.operations.remove-weight", 15)),
                 Math.max(0, config.getInt("corruption.operations.displace-weight", 20)),
@@ -163,6 +163,17 @@ final class CorruptionSettings {
         return materials.isEmpty() ? fallback : Set.copyOf(materials);
     }
 
+    private static List<Material> palette(List<String> names, List<Material> fallback) {
+        List<Material> materials = new ArrayList<>();
+        for (String name : names) {
+            Material material = parseMaterial(name);
+            if (material != null) {
+                materials.add(material);
+            }
+        }
+        return materials.isEmpty() ? fallback : List.copyOf(materials);
+    }
+
     private static List<EntityType> entityTypes(List<String> names) {
         List<EntityType> types = new ArrayList<>();
         for (String name : names) {
@@ -202,8 +213,8 @@ final class CorruptionSettings {
                 Material.END_PORTAL_FRAME);
     }
 
-    private static Set<Material> defaultPalette() {
-        return Set.of(
+    private static List<Material> defaultPalette() {
+        return List.of(
                 Material.SCULK,
                 Material.BLACKSTONE,
                 Material.CRYING_OBSIDIAN,
