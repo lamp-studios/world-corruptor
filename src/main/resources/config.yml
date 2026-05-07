@@ -1,0 +1,52 @@
+# WorldCorruptor configuration for Paper 1.21.11.
+# Tip: Make backups before enabling destructive corruption on a real world.
+
+enabled: true
+interval-ticks: 100
+
+# Empty worlds list means every normal loaded world is eligible.
+worlds: []
+
+corruption:
+  # How far from a random online player corruption can occur.
+  radius: 18
+  # Blocks attempted every interval. Higher values corrupt faster but cost more CPU.
+  blocks-per-cycle: 18
+  # The plugin will never mutate these materials.
+  protected-materials:
+    - BEDROCK
+    - BARRIER
+    - COMMAND_BLOCK
+    - CHAIN_COMMAND_BLOCK
+    - REPEATING_COMMAND_BLOCK
+    - STRUCTURE_BLOCK
+    - JIGSAW
+    - END_PORTAL
+    - END_PORTAL_FRAME
+  palette:
+    - SCULK
+    - SCULK_VEIN
+    - BLACKSTONE
+    - CRYING_OBSIDIAN
+    - OBSIDIAN
+    - NETHERRACK
+    - SOUL_SAND
+    - MAGMA_BLOCK
+    - MUD
+    - TUFF
+  operations:
+    replace-weight: 55
+    remove-weight: 15
+    displace-weight: 20
+    falling-block-weight: 10
+
+entities:
+  enabled: true
+  # Chance from 0.0 to 1.0 to attempt one spawn each interval.
+  spawn-chance: 0.18
+  spawn-radius: 14
+  types:
+    - ZOMBIE
+    - SKELETON
+    - SILVERFISH
+    - ENDERMITE

@@ -1,0 +1,16 @@
+name: WorldCorruptor
+version: '1.0.0'
+main: dev.lampyt.worldcorruptor.WorldCorruptorPlugin
+api-version: '1.21.11'
+author: lampyt
+description: Configurable world corruption with block mutation, displacement, removal, and entity spawning.
+commands:
+  worldcorruptor:
+    description: Manage world corruption.
+    usage: /<command> <start|stop|reload|status|pulse>
+    aliases: [wcorrupt, corruptor]
+    permission: worldcorruptor.admin
+permissions:
+  worldcorruptor.admin:
+    description: Allows control of WorldCorruptor.
+    default: op
